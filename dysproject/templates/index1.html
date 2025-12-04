@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehabilitating Reading for Dyslexia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script> <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.1/tesseract.min.js"></script> <!-- Tesseract.js -->
+</head>
+<body>
+    <div class="container">
+        <h1>Rehabilitating Reading: Addressing Dyslexia</h1>
+
+        <!-- Text-to-Speech Section -->
+        <textarea id="inputText" placeholder="Enter text here..."></textarea>
+        <div class="button-group">
+            <button id="speakButton">Read Aloud</button>
+            <button id="generateImage">Generate Image</button>
+            <button id="dyslexiaPageButton">Dyslexia-Friendly Text</button>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <img id="resultImage" alt="Generated Image" style="display:none;" width="300" height="200" />
+        </div>
+        <!-- PDF Upload and Processing Section -->
+        <h2>Upload a PDF for Text Recognition</h2>
+        <input type="file" id="pdfInput" accept="application/pdf" />
+        <button id="processPdfButton">Read PDF</button>
+        <button id="stopButton">Stop Reading</button>
+
+        <!-- Image Upload and Processing Section -->
+        <h2>Upload an Image for Speech Recognition</h2>
+        <input type="file" id="fileInput" accept="image/*" />
+        <button id="processImageButton">Process Image</button>
+        <img id="selectedImage" alt="Selected Image" style="display:none; margin-top: 20px; max-width: 100%;" />
+
+        <!-- Speech-to-Text Section -->
+        <h2>Speech to Text Converter</h2>
+        <button id="start-button">Start Listening</button>
+        <button id="stop-button" disabled>Stop Listening</button>
+        <div id="output" contenteditable="true" class="text-box">
+            <p>Press "Start Listening" and begin speaking...</p>
+        </div>
+        <br>
+        <a href="{{ url_for('next_page') }}" class="next-button">Go to Next Page</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>

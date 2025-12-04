@@ -1,0 +1,139 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: url("../images/bg3.webp") no-repeat center center fixed;
+}
+
+/* Container */
+.container {
+    width: 50%;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    padding: 20px; /* Slightly transparent white */
+    border-radius: 10px;
+    
+}
+
+/* Headings */
+h1 {
+    font-size: 32px;
+    color: #3A3D98;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+h3 {
+    color: #7f8c8d;
+}
+
+/* File Input & Buttons */
+input[type="file"] {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+button {
+    background-color: #5A67D8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #5A67D8;
+}
+
+/* Text Section */
+.text-section {
+    margin-top: 20px;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Next Page Button */
+.next-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5A67D8;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.next-button:hover {
+    background-color: #4C51BF;
+}
+/* Centering the Preview Box */
+.text-preview {
+    border: 2px solid #4C51BF;  /* Green border */
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    font-size: 18px;
+    width: 60%;  /* Adjust width for better alignment */
+    min-height: 100px;
+    text-align: left;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    
+    /* Center the box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hover Effect */
+.text-preview:hover {
+    background-color: #eef6ee;
+    border-color:  #4C51BF;
+}
+/* Styling the Textarea */
+textarea#userText {
+    width: 60%;  /* Adjust width for better alignment */
+    min-height: 100px;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #4C51BF;  /* Green border for better visibility */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    resize: vertical;  /* Allow vertical resizing */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    margin: 10px auto;  /* Centers the textarea */
+}
+
+/* Focus Effect */
+textarea#userText:focus {
+    border-color: #4C51BF; /* Darker green on focus */
+    background-color: #eef6ee;
+}

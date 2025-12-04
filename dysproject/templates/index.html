@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehabilitating Reading for Dyslexia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+    <style>
+        .text-preview {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f5f5f5;
+            font-size: 18px;
+            width: 80%;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rehabilitating Reading: Addressing Dyslexia</h1>
+
+        <!-- Image Upload Section -->
+        <h2>Dyslexia Text Normalizer</h2>
+        <input type="file" id="fileInput" accept="image/*">
+        <button onclick="uploadImage()">Upload</button>
+
+        <!-- Extracted & Corrected Text -->
+        <div class="text-section">
+            <h3>Extracted Text:</h3>
+            <p id="extractedText"></p>
+
+            <h3>Corrected Text:</h3>
+            <p id="correctedText"></p>
+        </div>
+
+        <!-- Letter Spacing & Line Height Adjustments -->
+        <h2>Letter Spacing</h2>
+
+        <label>Enter Text:</label><br>
+        <textarea id="userText" rows="4" cols="50" oninput="updatePreview()">
+This is a dyslexia-friendly text preview.
+        </textarea><br><br>
+
+        <label>Letter Spacing:</label>
+        <input type="range" id="letterSpacing" min="2" max="20" value="2" oninput="updatePreview()">
+        <span id="letterSpacingValue">2</span> px<br><br>
+
+        <label>Line Height:</label>
+        <input type="range" id="lineHeight" min="1" max="3" step="0.1" value="1.5" oninput="updatePreview()">
+        <span id="lineHeightValue">1.5</span><br><br>
+
+        <!-- Live Preview -->
+        <h3>Preview:</h3>
+        <div class="text-preview" id="preview">
+            This is a dyslexia-friendly text preview.
+        </div>
+    </div>
+
+    <script>
+        function uploadImage() {
+            let file = document.getElementById("fileInput").files[0];
+            if (!file) { alert("Please select an image!"); return; }
+
+            let formData = new FormData();
+            formData.append("file", file);
+
+            fetch("/upload", { method: "POST", body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) { alert(data.error); return; }
+                document.getElementById("extractedText").innerText = data.extracted_text;
+                document.getElementById("correctedText").innerText = data.corrected_text;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        function updatePreview() {
+            let text = document.getElementById("userText").value;
+            let letterSpacing = document.getElementById("letterSpacing").value;
+            let lineHeight = document.getElementById("lineHeight").value;
+
+            document.getElementById("letterSpacingValue").innerText = letterSpacing;
+            document.getElementById("lineHeightValue").innerText = lineHeight;
+
+            let preview = document.getElementById("preview");
+            preview.style.letterSpacing = letterSpacing + "px";
+            preview.style.lineHeight = lineHeight;
+            preview.innerText = text;
+        }
+    </script>
+</body>
+</html>
